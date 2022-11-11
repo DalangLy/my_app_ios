@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
     
     let loginUIContainer: UIStackView = {
         let stackView: UIStackView = UIStackView();
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(login), for: .touchUpInside)
         return button
     }()
     
@@ -105,7 +106,9 @@ class ViewController: UIViewController {
             loginButton.leadingAnchor.constraint(equalTo: loginUIContainer.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: loginUIContainer.trailingAnchor)
         ])
-        
-        
+    }
+    
+    @objc func login(){
+        self.navigationController?.pushViewController(HomeVC(), animated: true)
     }
 }
