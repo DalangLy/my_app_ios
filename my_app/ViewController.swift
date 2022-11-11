@@ -2,6 +2,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let loginUIContainer: UIStackView = {
+        let stackView: UIStackView = UIStackView();
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     let loginHeader: UILabel = {
         let label: UILabel = UILabel()
         label.text = "Login"
@@ -53,38 +60,50 @@ class ViewController: UIViewController {
     }
 
     func setupUI(){
-        view.addSubview(loginHeader)
+        
+        view.addSubview(loginUIContainer)
         
         NSLayoutConstraint.activate([
-            loginHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
-            loginHeader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginUIContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginUIContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginUIContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            loginUIContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            loginUIContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            loginUIContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
         
-        self.view.addSubview(emailInputField)
+        loginUIContainer.addSubview(loginHeader)
+        
+        NSLayoutConstraint.activate([
+            loginHeader.topAnchor.constraint(equalTo: loginUIContainer.safeAreaLayoutGuide.topAnchor, constant: 200),
+            loginHeader.centerXAnchor.constraint(equalTo: loginUIContainer.centerXAnchor),
+        ])
+        
+        loginUIContainer.addSubview(emailInputField)
         
         NSLayoutConstraint.activate([
             emailInputField.topAnchor.constraint(equalTo: loginHeader.bottomAnchor, constant: 20),
-            emailInputField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emailInputField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            emailInputField.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            emailInputField.centerXAnchor.constraint(equalTo: loginUIContainer.centerXAnchor),
+            emailInputField.leadingAnchor.constraint(equalTo: loginUIContainer.leadingAnchor),
+            emailInputField.trailingAnchor.constraint(equalTo: loginUIContainer.trailingAnchor)
         ])
         
-        self.view.addSubview(passwordInputField)
+        loginUIContainer.addSubview(passwordInputField)
         
         NSLayoutConstraint.activate([
             passwordInputField.topAnchor.constraint(equalTo: emailInputField.bottomAnchor, constant: 20),
-            passwordInputField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordInputField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            passwordInputField.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            passwordInputField.centerXAnchor.constraint(equalTo: loginUIContainer.centerXAnchor),
+            passwordInputField.leadingAnchor.constraint(equalTo: loginUIContainer.leadingAnchor),
+            passwordInputField.trailingAnchor.constraint(equalTo: loginUIContainer.trailingAnchor)
         ])
         
-        self.view.addSubview(loginButton)
+        loginUIContainer.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: passwordInputField.bottomAnchor, constant: 20),
-            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            loginButton.centerXAnchor.constraint(equalTo: loginUIContainer.centerXAnchor),
+            loginButton.leadingAnchor.constraint(equalTo: loginUIContainer.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: loginUIContainer.trailingAnchor)
         ])
         
         
