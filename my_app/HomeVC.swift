@@ -1,8 +1,6 @@
 import UIKit
 
 class HomeVC: UIViewController, UICollectionViewDelegate{
-
-    //var images:[AnyObject] = [AnyObject]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -14,6 +12,7 @@ class HomeVC: UIViewController, UICollectionViewDelegate{
         cv.register(MyCustomCell.self, forCellWithReuseIdentifier: "myCell")
         cv.dataSource = self
         cv.delegate = self
+        cv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(cv)
     }
     
@@ -23,29 +22,7 @@ class HomeVC: UIViewController, UICollectionViewDelegate{
         // Do any additional setup after loading the view.
         self.title = "Home"
         self.view.backgroundColor = .systemBackground
-        
-        
-//        let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
-//        downloadImage(from: url)
     }
-    
-//    func downloadImage(from url: URL) {
-//        print("Download Started")
-//        getData(from: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//            print(response?.suggestedFilename ?? url.lastPathComponent)
-//            print("Download Finished")
-//            // always update the UI from the main thread
-//            print(data)
-////            DispatchQueue.main.async() { [weak self] in
-////                self?.imageView.image = UIImage(data: data)
-////            }
-//        }
-//    }
-    
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
 }
 
 
@@ -55,8 +32,11 @@ extension HomeVC : UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCustomCell
-        cell.backgroundColor = .blue
         return cell;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(DetailsVC(), animated: true)
     }
 }
 

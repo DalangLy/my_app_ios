@@ -18,20 +18,6 @@ class LoginVC: UIViewController {
         return label
     }()
     
-    let loginButton: UIButton = {
-        let button: UIButton = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
-//        button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 5
-        button.clipsToBounds = true
-        button.tintColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(login), for: .touchUpInside)
-        return button
-    }()
-    
     let emailInputField: UITextField = {
         let textField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 10, height: 100))
         textField.placeholder = "Email"
@@ -55,6 +41,18 @@ class LoginVC: UIViewController {
         return textField
     }()
     
+    let loginButton: UIButton = {
+        let button: UIButton = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 5
+        button.clipsToBounds = true
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(login), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,8 +67,6 @@ class LoginVC: UIViewController {
         view.addSubview(loginUIContainer)
         
         NSLayoutConstraint.activate([
-            loginUIContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginUIContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loginUIContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             loginUIContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             loginUIContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
