@@ -19,12 +19,14 @@ class LoginVC: UIViewController {
     }()
     
     let loginButton: UIButton = {
-        let button: UIButton = UIButton()
+        let button: UIButton = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.lightGray.cgColor
+//        button.layer.borderWidth = 1
+//        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.backgroundColor = .blue
         button.layer.cornerRadius = 5
+        button.clipsToBounds = true
+        button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(login), for: .touchUpInside)
         return button
@@ -36,6 +38,7 @@ class LoginVC: UIViewController {
         textField.layer.cornerRadius = 5
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -47,6 +50,7 @@ class LoginVC: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.isSecureTextEntry = true
+        textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
